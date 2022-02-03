@@ -198,6 +198,23 @@ public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransien
                 corsOrigins: new[] { swaggerRootUrl.RemovePostFix("/") }
             );
         }
+
+        // Xamarin Client
+        var xamarinClientId = configurationSection["ConsumeAbpFromXamarinApp_Xamarin:ClientId"];
+        if (!xamarinClientId.IsNullOrWhiteSpace())
+        {
+            var xamarinRootUrl = configurationSection["ConsumeAbpFromXamarinApp_Xamarin:RootUrl"].TrimEnd('/');
+
+            await CreateClientAsync(
+                name: xamarinClientId,
+                scopes: commonScopes,
+                grantTypes: new[] { "authorization_code", "password" },
+                secret: configurationSection["ConsumeAbpFromXamarinApp_Xamarin:ClientSecret"]?.Sha256(),
+                requireClientSecret: false,
+                redirectUri: "xamarinformsclients://callback",
+                corsOrigins: new[] { xamarinRootUrl.RemovePostFix("/") }
+            );
+        }
     }
 
     private async Task<Client> CreateClientAsync(
