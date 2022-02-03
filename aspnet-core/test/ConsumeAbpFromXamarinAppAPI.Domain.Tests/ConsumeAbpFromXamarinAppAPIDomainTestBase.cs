@@ -1,0 +1,6 @@
+﻿namespace ConsumeAbpFromXamarinAppAPI;
+
+public abstract class ConsumeAbpFromXamarinAppAPIDomainTestBase : ConsumeAbpFromXamarinAppAPITestBase<ConsumeAbpFromXamarinAppAPIDomainTestModule>
+{
+
+}

@@ -1,6 +1,0 @@
-﻿namespace ConsumeAbpFromXamarinApp;
-
-public abstract class ConsumeAbpFromXamarinAppApplicationTestBase : ConsumeAbpFromXamarinAppTestBase<ConsumeAbpFromXamarinAppApplicationTestModule>
-{
-
-}
