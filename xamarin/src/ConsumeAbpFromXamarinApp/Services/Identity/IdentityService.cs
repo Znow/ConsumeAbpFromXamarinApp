@@ -1,6 +1,5 @@
 ﻿using ConsumeAbpFromXamarinApp.Services.Http;
 using IdentityModel.OidcClient;
-using IdentityModel.OidcClient.Browser;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;

@@ -13,6 +13,7 @@ namespace ConsumeAbpFromXamarinApp
             Api = api;
         }
 
+        public static Global Settings { get; } = new Global(new IdentityServer(), new Api());
     }
 
     public class IdentityServer
@@ -29,7 +30,6 @@ namespace ConsumeAbpFromXamarinApp
     {
         private readonly string _apiEndpoint = "https://localhost:44377/api/";
         public readonly string RegularEndpoint = "https://localhost:44377";
-
         public string TokenUri => RegularEndpoint + "/connect/token";
     }
 }

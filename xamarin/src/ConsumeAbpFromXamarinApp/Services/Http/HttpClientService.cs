@@ -27,7 +27,13 @@ namespace ConsumeAbpFromXamarinApp.Services.Http
         {
             _httpClient = await GetHttpClientAsync();
 
-            var data = $"grant_type=password&username={userName}&password={password}&client_id={Global.Settings.IdentityServer.ClientId}&client_secret={Global.Settings.IdentityServer.ClientSecret}&scope={Global.Settings.IdentityServer.Scope}";
+            var data = $"grant_type=password";
+            data += $"&username={userName}";
+            data += $"&password={password}";
+            data += $"&client_id={Global.Settings.IdentityServer.ClientId}";
+            data += $"&client_secret={Global.Settings.IdentityServer.ClientSecret}";
+            data += $"&scope={Global.Settings.IdentityServer.Scope}";
+            
             var content = new StringContent(data, Encoding.UTF8, "application/x-www-form-urlencoded");
 
             var response = await _httpClient.Value.PostAsync(uri, content);

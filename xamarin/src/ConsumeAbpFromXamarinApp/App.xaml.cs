@@ -1,4 +1,6 @@
 ﻿using System;
+using ConsumeAbpFromXamarinApp.Services.Http;
+using ConsumeAbpFromXamarinApp.Services.Identity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,6 +11,10 @@ namespace ConsumeAbpFromXamarinApp
         public App()
         {
             InitializeComponent();
+            
+            DependencyService.Register<IdentityService>();
+            DependencyService.Register<HttpClientService<IdentityUserDto, IdentityUserDto>>();
+            DependencyService.Register<HttpClientService<IdentityDto, IdentityDto>>();
 
             MainPage = new MainPage();
         }
