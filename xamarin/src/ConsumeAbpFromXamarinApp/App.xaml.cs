@@ -1,8 +1,6 @@
-﻿using System;
-using ConsumeAbpFromXamarinApp.Services.Http;
+﻿using ConsumeAbpFromXamarinApp.Services.Http;
 using ConsumeAbpFromXamarinApp.Services.Identity;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace ConsumeAbpFromXamarinApp
 {

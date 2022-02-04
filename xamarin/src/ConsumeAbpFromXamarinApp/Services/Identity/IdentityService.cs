@@ -39,43 +39,6 @@ namespace ConsumeAbpFromXamarinApp.Services.Identity
             return true;
         }
 
-        private async Task<bool> WriteTokensAndClaimsToSecureStorageAsync(LoginResult loginResult)
-        {
-            try
-            {
-                var customClaims = ExtractCustomClaims(loginResult.AccessToken);
-
-                await SecureStorage.SetAsync(IdentityToken, loginResult.IdentityToken);
-                foreach (var claim in loginResult.User.Claims)
-                {
-                    await SecureStorage.SetAsync(claim.Type, claim.Value);
-                }
-
-                await SecureStorage.SetAsync(AccessToken, loginResult.AccessToken);
-
-                var email = await SecureStorage.GetAsync("sub");
-
-                var keyValuePairs = new List<KeyValuePair<string, string>>()
-                {
-                    new KeyValuePair<string, string>("email", email)
-                };
-
-                var httpContent = new FormUrlEncodedContent(keyValuePairs);
-
-                // Get user by email from HTTP call and save
-                await SecureStorage.SetAsync(UserId, email);
-            }
-            catch (Exception ex)
-            {
-                var message = ex.Message;
-                // Possible that device doesn't support secure storage on device.
-                //throw new ArgumentException("device doesn't support secure storage on device");
-                throw ex;
-            }
-
-            return true;
-        }
-
         public JsonDocument ExtractCustomClaims(string accessToken)
         {
             var base64payload = accessToken.Split('.')[1];
