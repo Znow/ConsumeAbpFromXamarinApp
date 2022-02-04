@@ -8,6 +8,4 @@ namespace ConsumeAbpFromXamarinApp.Services.Http
     {
         Task<T> AuthPostAsync(string uri, string userName, string password);
     }
-
-
 }
